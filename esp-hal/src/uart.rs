@@ -53,19 +53,14 @@ use crate::{
     clock::Clocks,
     gpio::{
         interconnect::{OutputConnection, PeripheralInput, PeripheralOutput},
-        InputSignal,
-        OutputSignal,
-        PinGuard,
-        Pull,
+        InputSignal, OutputSignal, PinGuard, Pull,
     },
     interrupt::InterruptHandler,
     pac::uart0::RegisterBlock,
     peripheral::{Peripheral, PeripheralRef},
     peripherals::Interrupt,
     system::{PeripheralClockControl, PeripheralGuard},
-    Async,
-    Blocking,
-    DriverMode,
+    Async, Blocking, DriverMode,
 };
 
 /// UART RX Error
@@ -1328,7 +1323,7 @@ where
 
         // Setting err_wr_mask stops uart from storing data when data is wrong according
         // to reference manual
-        self.regs().conf0().modify(|_, w| w.err_wr_mask().set_bit());
+        // self.regs().conf0().modify(|_, w| w.err_wr_mask().set_bit());
 
         crate::rom::ets_delay_us(15);
 
